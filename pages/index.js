@@ -14,6 +14,7 @@ const Home = () => {
           height: "100vh",
           display: "flex",
           justifyContent: "center",
+          borderRadius: "11px",
           alignItems: "center",
         }}
       >
@@ -21,8 +22,23 @@ const Home = () => {
       </section>
 
       <section style={{ position: "relative" }}>
-        <List list={results} />
-        <Maps />
+        <div className="wrapper">
+          <List list={results} />
+          <div
+            style={{
+              marginTop: "20px",
+              marginBottom: "20px",
+              marginLeft: "20px",
+              width: "100%",
+              borderRadius: "11px",
+              background: "white",
+            }}
+          >
+            hello
+          </div>
+        </div>
+
+        <Maps coordinates={results} />
       </section>
     </div>
   );

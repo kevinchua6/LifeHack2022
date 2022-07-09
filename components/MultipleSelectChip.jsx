@@ -57,6 +57,7 @@ export default function MultipleSelectChip({ eWaste, setEWaste }) {
       typeof value === "string" ? value.split("|") : value
     );
   };
+  // TODO: do validation
 
   return (
     <div>
