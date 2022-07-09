@@ -1,22 +1,23 @@
-import FormContainer from "../components/FormContainer";
+import LandingPage from "../components/LandingPage";
 import Maps from "../components/Maps";
 import { useState } from "react";
 import List from "../components/List";
 
-const LIMIT = 10;
 const Home = () => {
   console.log(process.env.NEXT_PUBLIC_KEY);
   const [results, setResults] = useState([]);
 
   return (
     <div>
-      <section style={{ height: "100vh" }}>
-        <FormContainer
-          setPostalCode={setPostalCode}
-          postalCode={postalCode}
-          eWaste={eWaste}
-          setEWaste={setEWaste}
-        />
+      <section
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <LandingPage />
       </section>
 
       <section style={{ position: "relative" }}>

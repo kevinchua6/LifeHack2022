@@ -3,16 +3,25 @@ import PostalCodeTextField from "./PostalCodeTextField";
 import MultipleSelectChip from "./MultipleSelectChip";
 import SubmitButton from "./SubmitButton";
 
+const LIMIT = 10;
 function FormContainer() {
   const [postalCode, setPostalCode] = useState("");
   const [eWaste, setEWaste] = useState([]);
-  const onSubmit = () => {
+  const sendData = () => {
+    console.log(
+      "/api/search?" +
+        new URLSearchParams({
+          address: postalCode,
+          types: eWaste.join("|"),
+          limit: String(LIMIT),
+        })
+    );
     fetch(
       "/api/search?" +
         new URLSearchParams({
-          address: address,
-          types: types.join(","),
-          limit: String(limit),
+          address: postalCode,
+          types: eWaste.join("|"),
+          limit: String(LIMIT),
         })
     )
       .then((response) => response.json())
@@ -21,10 +30,20 @@ function FormContainer() {
       });
   };
   return (
-    <div>
-      <PostalCodeTextField />
-      <MultipleSelectChip />
-      <SubmitButton />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <PostalCodeTextField
+        postalCode={postalCode}
+        setPostalCode={setPostalCode}
+      />
+      <MultipleSelectChip eWaste={eWaste} setEWaste={setEWaste} />
+      <SubmitButton sendData={sendData} />
     </div>
   );
 }
