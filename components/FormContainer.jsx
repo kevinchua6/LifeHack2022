@@ -5,7 +5,7 @@ import SubmitButton from "./SubmitButton"
 
 function FormContainer() {
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent:'center', alignItems:'center', flexDirection: 'column'}}>
         <PostalCodeTextField />
         <MultipleSelectChip />
         <SubmitButton />

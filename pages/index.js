@@ -1,4 +1,4 @@
-import FormContainer from "../components/FormContainer";
+import LandingPage from "../components/LandingPage";
 import Maps from "../components/Maps";
 import { useState } from "react";
 import List from "../components/List";
@@ -10,13 +10,14 @@ const Home = () => {
   const [eWaste, setEWaste] = useState([]);
   return (
     <div>
-      <section style={{ height: "100vh" }}>
-        <FormContainer
-          setPostalCode={setPostalCode}
-          postalCode={postalCode}
-          eWaste={eWaste}
-          setEWaste={setEWaste}
-        />
+
+      <section style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
+       <LandingPage />
       </section>
 
       <section style={{ position: "relative" }}>
@@ -30,6 +31,7 @@ const Home = () => {
             { id: 2, address: "my house" },
           ]}
         />
+      
         <Maps
           postalCode={postalCode}
           setPostalCode={setPostalCode}
