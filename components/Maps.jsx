@@ -31,18 +31,20 @@ function Map({ coordinates, setSideInfo }) {
       <Marker position={center} />
       {coordinates?.map((coordinate) => {
         console.log(coordinate);
-        // setSideInfo({
-        //   // servicePointName: coordinate.properties.Name,
-        //   // collectionType: coordinate.properties.Collection_Type,
-        //   // location: coordinate.properties.Location,
-        //   // postalCode: coordinate.properties.Postal_Code,
-        //   // remarks: coordinate.properties.Remarks,
-        //   // website: coordinate.properties.Website,
-        // });
         return (
           <Marker
             // icon={hello.svg}
             key={coordinate.properties.ID}
+            onClick={() =>
+              setSideInfo({
+                servicePointName: coordinate.properties.Name,
+                collectionType: coordinate.properties.Collection_Type,
+                location: coordinate.properties.Location,
+                postalCode: coordinate.properties.Postal_Code,
+                remarks: coordinate.properties.Remarks,
+                website: coordinate.properties.Website,
+              })
+            }
             position={{
               lat: parseFloat(coordinate.properties.Lat),
               lng: parseFloat(coordinate.properties.Lon),

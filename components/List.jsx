@@ -4,7 +4,7 @@ const List = ({ list }) => {
   console.log(list);
   return (
     <div className="list">
-      {list.map((x) => (
+      {list?.map((x) => (
         <div key={x.properties.ID} className="list-item">
           <p>{x.properties.Name}</p>
           <p>{x.properties.Location}</p>

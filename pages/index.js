@@ -6,6 +6,7 @@ import List from "../components/List";
 const Home = () => {
   const [results, setResults] = useState([]);
   const [sideInfo, setSideInfo] = useState({});
+  console.log(results)
 
   return (
     <div>
@@ -34,7 +35,7 @@ const Home = () => {
               background: "white",
             }}
           >
-            sideInfo
+            {sideInfo.servicePointName}
           </div>
         </div>
 
