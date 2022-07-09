@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PostalCodeTextField from "./PostalCodeTextField";
 import MultipleSelectChip from "./MultipleSelectChip";
 import SubmitButton from "./SubmitButton";
 import { eWasteList } from "./MultipleSelectChip";
 
 const LIMIT = 10;
+
+const UTOWN_POSTAL_CODE = "138601";
+
 function FormContainer({ setResults }) {
   const [postalCode, setPostalCode] = useState("");
   const [eWaste, setEWaste] = useState([]);
 
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
+  useEffect(() => {
+    sendData();
+  }, []);
+
   const sendData = () => {
     fetch(
       "/api/search?" +
         new URLSearchParams({
-          address: postalCode,
-          types: eWaste.length > 0 ? eWaste.join("|") : eWasteList.join("|"),
+          address: postalCode || UTOWN_POSTAL_CODE,
+          types: eWaste.length > 0 ? eWaste.join("|") : eWasteList[0],
           limit: String(LIMIT),
         })
     )
@@ -25,6 +32,7 @@ function FormContainer({ setResults }) {
         setResults(results);
       });
   };
+
   return (
     <div
       style={{
