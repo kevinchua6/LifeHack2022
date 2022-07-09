@@ -17,22 +17,11 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <LandingPage />
+        <LandingPage setResults={setResults} />
       </section>
 
       <section style={{ position: "relative" }}>
-        <List
-          list={[
-            {
-              distance: 800,
-              properties: {
-                ID: 1,
-                Name: "NUS",
-                Location: "nus school of computing",
-              },
-            },
-          ]}
-        />
+        <List list={results} />
         <Maps />
       </section>
     </div>

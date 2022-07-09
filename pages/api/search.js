@@ -53,7 +53,7 @@ export default async function handler(req, res) {
   const { lat, lng } = data.results[0].geometry.location;
 
   const filteredSites = sites
-    .filter(canRecycle(types.split(",")))
+    .filter(canRecycle(types.split("|")))
     .map((site) => {
       const [siteLng, siteLat] = site.geometry.coordinates;
       return {

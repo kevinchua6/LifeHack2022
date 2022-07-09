@@ -4,18 +4,10 @@ import MultipleSelectChip from "./MultipleSelectChip";
 import SubmitButton from "./SubmitButton";
 
 const LIMIT = 10;
-function FormContainer() {
+function FormContainer({ setResults }) {
   const [postalCode, setPostalCode] = useState("");
   const [eWaste, setEWaste] = useState([]);
   const sendData = () => {
-    console.log(
-      "/api/search?" +
-        new URLSearchParams({
-          address: postalCode,
-          types: eWaste.join("|"),
-          limit: String(LIMIT),
-        })
-    );
     fetch(
       "/api/search?" +
         new URLSearchParams({
@@ -26,7 +18,7 @@ function FormContainer() {
     )
       .then((response) => response.json())
       .then((results) => {
-        console.log(results);
+        setResults(results);
       });
   };
   return (
