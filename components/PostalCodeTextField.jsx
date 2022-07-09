@@ -12,7 +12,8 @@ function PostalCodeTextField({ postalCode, setPostalCode }) {
       id="outlined-basic"
       label="Enter postal code"
       variant="outlined"
-      style={{ width: "55%" }}
+      style={{ width: "55%"}}
+      color="success"
       value={postalCode}
       type="number"
       onChange={onChange}
