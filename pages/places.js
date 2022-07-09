@@ -12,11 +12,10 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import FormContainer from "../components/FormContainer";
 
 export default function Places() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_KEY,
     libraries: ["places"],
   });
 
@@ -32,7 +31,6 @@ function Map() {
     <>
       <div className="places-container">
         <PlacesAutocomplete setSelected={setSelected} />
-        <FormContainer/>
       </div>
 
       <GoogleMap
