@@ -1,5 +1,4 @@
 import sites from "../../data/sites.json";
-import { Site } from "../../data/types";
 import { remarksToRecyclableList } from "./e-waste-types";
 
 // modified from: http://www.movable-type.co.uk/scripts/latlong.html
@@ -18,7 +17,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
   return R * c; // in metres
 }
 
-const canRecycle = (types: string[]) => (site: Site) => {
+const canRecycle = (types) => (site) => {
   const recyclableList = remarksToRecyclableList[site.properties.Remarks];
   return types.every((type) => recyclableList.includes(type));
 };
@@ -54,7 +53,7 @@ export default async function handler(req, res) {
   const { lat, lng } = data.results[0].geometry.location;
 
   const filteredSites = sites
-    .filter(canRecycle(types.split(",")))
+    .filter(canRecycle(types.split("|")))
     .map((site) => {
       const [siteLng, siteLat] = site.geometry.coordinates;
       return {

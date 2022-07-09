@@ -45,29 +45,28 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip() {
+export default function MultipleSelectChip({ eWaste, setEWaste }) {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setEWaste(
       // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
+      typeof value === "string" ? value.split("|") : value
     );
   };
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 560}} >
+      <FormControl sx={{ m: 1, minWidth: 560 }}>
         <InputLabel id="demo-multiple-chip-label">E-Waste</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
-          value={personName}
+          value={eWaste}
           onChange={handleChange}
           input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
           renderValue={(selected) => (
@@ -83,7 +82,7 @@ export default function MultipleSelectChip() {
             <MenuItem
               key={name}
               value={name}
-              style={getStyles(name, personName, theme)}
+              style={getStyles(name, eWaste, theme)}
             >
               {name}
             </MenuItem>

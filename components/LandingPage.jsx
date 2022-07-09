@@ -2,12 +2,11 @@ import React from "react";
 import Header from "./Header";
 import FormContainer from "./FormContainer";
 
-function LandingPage() {
-
+function LandingPage({ setResults }) {
   return (
     <div>
       <Header />
-      <FormContainer />
+      <FormContainer setResults={setResults} />
     </div>
   );
 }
