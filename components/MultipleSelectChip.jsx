@@ -38,7 +38,7 @@ const eWasteList = [
     'Power supplies'
 ];
 
-function getStyles(name: string, personName: readonly string[], theme: Theme) {
+function getStyles(name, personName, theme) {
   return {
     fontWeight:
       personName.indexOf(name) === -1
@@ -49,9 +49,9 @@ function getStyles(name: string, personName: readonly string[], theme: Theme) {
 
 export default function MultipleSelectChip() {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [personName, setPersonName] = React.useState([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
+  const handleChange = (event) => {
     const {
       target: { value },
     } = event;
