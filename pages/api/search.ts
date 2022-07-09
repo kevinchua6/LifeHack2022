@@ -1,4 +1,3 @@
-import "dotenv/config";
 import sites from "../../data/sites.json";
 import { Site } from "../../data/types";
 import { remarksToRecyclableList } from "./e-waste-types";
@@ -26,6 +25,18 @@ const canRecycle = (types: string[]) => (site: Site) => {
 
 export default async function handler(req, res) {
   const { address, types, limit = 10 } = req.query;
+
+  if (!address) {
+    res.status(200).json({
+      error: "Please provide an address.",
+    });
+  }
+
+  if (!types) {
+    res.status(200).json({
+      error: "Please provide a list of comma-separated e-waste types.",
+    });
+  }
 
   const data = await fetch(
     "https://maps.googleapis.com/maps/api/geocode/json?" +
