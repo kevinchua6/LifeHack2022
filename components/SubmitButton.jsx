@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-function SubmitButton({ sendData }) {
+function SubmitButton({ sendData, postalCode, setIsSubmitClicked }) {
   const onS = () => {
+    setIsSubmitClicked(true);
+    if (postalCode.length !== 6) return;
     sendData();
     window.scrollTo(0, document.body.scrollHeight);
   };

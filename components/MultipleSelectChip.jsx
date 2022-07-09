@@ -19,7 +19,7 @@ const MenuProps = {
   },
 };
 
-const eWasteList = [
+export const eWasteList = [
   "Printers",
   "Power banks",
   "Computers, laptops",

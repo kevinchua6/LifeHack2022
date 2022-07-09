@@ -8,7 +8,6 @@ import Head from "next/head";
 const Home = () => {
   const [results, setResults] = useState([]);
   const [sideInfo, setSideInfo] = useState({});
-  console.log(results);
 
   return (
     <div>
@@ -50,7 +49,7 @@ const Home = () => {
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
               {sideInfo.collectionType}
             </Typography>
-            {/* Make url the colour of a link */}
+
             <a href={sideInfo.directions} target="_blank" rel="noreferrer">
               {sideInfo.location + " " + Math.trunc(sideInfo.postalCode)}
             </a>

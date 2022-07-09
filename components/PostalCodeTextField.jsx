@@ -1,7 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 
-function PostalCodeTextField({ postalCode, setPostalCode }) {
+function PostalCodeTextField({ postalCode, setPostalCode, isSubmitClicked }) {
   const onChange = (event) => {
     if (event.target.value.length > 6) return;
     setPostalCode(event.target.value);
@@ -9,10 +9,14 @@ function PostalCodeTextField({ postalCode, setPostalCode }) {
   //TODO: validate must be 6 length
   return (
     <TextField
+      error={
+        isSubmitClicked && postalCode.length !== 6 && !postalCode.length !== 0
+      }
       id="outlined-basic"
       label="Enter postal code"
+      helperText={isSubmitClicked && "Please enter a 6 character postal code"}
       variant="outlined"
-      style={{ width: "55%"}}
+      style={{ width: "55%" }}
       color="success"
       value={postalCode}
       type="number"
