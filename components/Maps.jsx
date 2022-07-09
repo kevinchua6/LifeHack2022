@@ -17,7 +17,7 @@ function Map({ coordinates }) {
   return (
     <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
       {
-        coordinates.map((coordinate, index) => {
+        coordinates?.map((coordinate, index) => {
           return (
             <Marker
               // icon={hello.svg}
