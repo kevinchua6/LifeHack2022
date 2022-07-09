@@ -11,8 +11,8 @@ function SubmitButton() {
     variant="contained"
     style={{
       backgroundColor: "#2E8B57",
-      width: "80%",
-      height: "50px",
+      width: "55%",
+      height: "52px",
       textTransform: 'none',
       fontSize: '16px'
     }}
@@ -20,7 +20,7 @@ function SubmitButton() {
   >
     Submit
   </Button>;
-  
+
 }
 
 export default SubmitButton;

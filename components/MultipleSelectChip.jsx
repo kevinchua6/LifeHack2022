@@ -61,7 +61,7 @@ export default function MultipleSelectChip() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 400}}  >
+      <FormControl sx={{ m: 1, minWidth: 560}} >
         <InputLabel id="demo-multiple-chip-label">E-Waste</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
