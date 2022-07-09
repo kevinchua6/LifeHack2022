@@ -1,16 +1,32 @@
-import React from 'react'
-import PostalCodeTextField from "./PostalCodeTextField"
-import MultipleSelectChip from "./MultipleSelectChip"
-import SubmitButton from "./SubmitButton"
+import React, { useState } from "react";
+import PostalCodeTextField from "./PostalCodeTextField";
+import MultipleSelectChip from "./MultipleSelectChip";
+import SubmitButton from "./SubmitButton";
 
 function FormContainer() {
+  const [postalCode, setPostalCode] = useState("");
+  const [eWaste, setEWaste] = useState([]);
+  const onSubmit = () => {
+    fetch(
+      "/api/search?" +
+        new URLSearchParams({
+          address: address,
+          types: types.join(","),
+          limit: String(limit),
+        })
+    )
+      .then((response) => response.json())
+      .then((results) => {
+        console.log(results);
+      });
+  };
   return (
     <div>
-        <PostalCodeTextField />
-        <MultipleSelectChip />
-        <SubmitButton />
+      <PostalCodeTextField />
+      <MultipleSelectChip />
+      <SubmitButton />
     </div>
-  )
+  );
 }
 
-export default FormContainer
+export default FormContainer;

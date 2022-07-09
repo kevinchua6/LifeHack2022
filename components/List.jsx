@@ -4,8 +4,10 @@ const List = ({ list }) => {
   return (
     <div className="list">
       {list.map((x) => (
-        <div key={x.id} className="list-item">
-          <p>{x.address}</p>
+        <div key={x.properties.ID} className="list-item">
+          <p>{x.properties.Name}</p>
+          <p>{x.properties.Location}</p>
+          <p>{x.distance}</p>
         </div>
       ))}
     </div>

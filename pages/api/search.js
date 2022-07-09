@@ -19,7 +19,7 @@ function getDistance(lat1, lon1, lat2, lon2) {
   return R * c; // in metres
 }
 
-const canRecycle = (types: string[]) => (site: Site) => {
+const canRecycle = (types) => (site) => {
   const recyclableList = remarksToRecyclableList[site.properties.Remarks];
   return types.every((type) => recyclableList.includes(type));
 };
