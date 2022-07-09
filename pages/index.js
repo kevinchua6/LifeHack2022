@@ -10,28 +10,44 @@ const Home = () => {
   const [eWaste, setEWaste] = useState([]);
   return (
     <div>
-
-      <section style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-       <LandingPage />
+      <section
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          borderRadius: "11px",
+          alignItems: "center",
+        }}
+      >
+        <LandingPage />
       </section>
 
       <section style={{ position: "relative" }}>
-        <List
-          list={[
-            { id: 1, address: "NUS utown" },
-            { id: 2, address: "my house" },
-            { id: 2, address: "my house" },
-            { id: 2, address: "my house" },
-            { id: 2, address: "my house" },
-            { id: 2, address: "my house" },
-          ]}
-        />
-      
+        <div className="wrapper">
+          <List
+            list={[
+              { id: 1, address: "NUS utown" },
+              { id: 2, address: "my house" },
+              { id: 2, address: "my house" },
+              { id: 2, address: "my house" },
+              { id: 2, address: "my house" },
+              { id: 2, address: "my house" },
+            ]}
+          />
+          <div
+            style={{
+              marginTop: "20px",
+              marginBottom: "20px",
+              marginLeft: "20px",
+              width: "100%",
+              borderRadius: "11px",
+              background: "white",
+            }}
+          >
+            hello
+          </div>
+        </div>
+
         <Maps
           postalCode={postalCode}
           setPostalCode={setPostalCode}
