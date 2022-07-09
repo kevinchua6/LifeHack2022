@@ -2,11 +2,12 @@ import LandingPage from "../components/LandingPage";
 import Maps from "../components/Maps";
 import { useState } from "react";
 import List from "../components/List";
+import { Typography } from "@mui/material";
 
 const Home = () => {
   const [results, setResults] = useState([]);
   const [sideInfo, setSideInfo] = useState({});
-  console.log(results)
+  console.log(results);
 
   return (
     <div>
@@ -33,9 +34,32 @@ const Home = () => {
               width: "100%",
               borderRadius: "11px",
               background: "white",
+              padding: "15px",
             }}
           >
-            {sideInfo.servicePointName}
+            <Typography sx={{ fontSize: 17 }}>Service Point Name</Typography>
+
+            <Typography variant="h5" component="div">
+              {sideInfo.servicePointName}
+            </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              {sideInfo.collectionType}
+            </Typography>
+            {/* Make url the colour of a link */}
+            <a href={sideInfo.directions} target="_blank" rel="noreferrer">
+              {sideInfo.location + " " + Math.trunc(sideInfo.postalCode)}
+            </a>
+
+            <Typography variant="h5" component="div">
+              Remarks:
+            </Typography>
+            <Typography paragraph>{sideInfo.remarks}</Typography>
+            <Typography variant="h5" component="div">
+              Website:
+            </Typography>
+            <a href={sideInfo.website} target="_blank" rel="noreferrer">
+              {sideInfo.website}
+            </a>
           </div>
         </div>
 

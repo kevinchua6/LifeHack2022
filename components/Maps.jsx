@@ -43,6 +43,7 @@ function Map({ coordinates, setSideInfo }) {
                 postalCode: coordinate.properties.Postal_Code,
                 remarks: coordinate.properties.Remarks,
                 website: coordinate.properties.Website,
+                directions: coordinate.properties.Directions,
               })
             }
             position={{
