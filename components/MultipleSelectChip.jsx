@@ -45,7 +45,7 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip({ eWaste, setEWaste }) {
+export default function MultipleSelectChip({ eWaste, setEWaste, classes }) {
   const theme = useTheme();
 
   const handleChange = (event) => {
