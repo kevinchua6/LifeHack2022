@@ -1,21 +1,21 @@
-import { useMemo } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import FormContainer from "../components/FormContainer"
+import Maps from "../components/Maps"
+import { useState } from "react"
 
-export default function Home() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDeax6F_TPwBePjflGQgWHR3w2n93hk7D8",
-  });
-
-  if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
-}
-
-function Map() {
-  const center = useMemo(() => ({ lat: 44, lng: -80 }), []);
-
+const Home = () => {
+  console.log(process.env)
+  const [postalCode, setPostalCode] = useState("")
+  const [eWaste, setEWaste] = useState([])
   return (
-    <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
-      <Marker position={center} />
-    </GoogleMap>
-  );
+    <div>
+      <section style={{height: '100vh'}}>
+        <FormContainer setPostalCode={setPostalCode} postalCode={postalCode} eWaste={eWaste} setEWaste={setEWaste}/>
+      </section>
+ 
+      <section>
+        <Maps postalCode={postalCode} setPostalCode={setPostalCode} eWaste={eWaste} setEWaste={setEWaste}/>
+      </section>
+    </div>
+  )
 }
+export default Home;
