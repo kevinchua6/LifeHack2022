@@ -35,6 +35,7 @@ function Map({ coordinates }) {
           <Marker
             // icon={hello.svg}
             key={coordinate.properties.ID}
+            onClick={() => console.log("clicked")}
             position={{
               lat: parseFloat(coordinate.properties.Lat),
               lng: parseFloat(coordinate.properties.Lon),

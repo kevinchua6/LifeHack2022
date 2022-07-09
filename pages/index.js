@@ -4,7 +4,6 @@ import { useState } from "react";
 import List from "../components/List";
 
 const Home = () => {
-  console.log(process.env.NEXT_PUBLIC_KEY);
   const [results, setResults] = useState([]);
 
   return (

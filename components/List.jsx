@@ -1,6 +1,7 @@
 import React from "react";
 
 const List = ({ list }) => {
+  console.log(list);
   return (
     <div className="list">
       {list.map((x) => (
