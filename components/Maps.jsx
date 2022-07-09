@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import react from "react";
+import { remarksToColours } from "../data/remarks-to-colours";
 
 export default function Maps({ coordinates, setSideInfo }) {
   const { isLoaded } = useLoadScript({
@@ -30,10 +31,9 @@ function Map({ coordinates, setSideInfo }) {
     >
       <Marker position={center} />
       {coordinates?.map((coordinate) => {
-        console.log(coordinate);
         return (
           <Marker
-            // icon={hello.svg}
+            icon={`/${remarksToColours[coordinate.properties.Remarks]}.png`}
             key={coordinate.properties.ID}
             onClick={() =>
               setSideInfo({

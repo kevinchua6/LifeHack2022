@@ -3,6 +3,7 @@ import Maps from "../components/Maps";
 import { useState } from "react";
 import List from "../components/List";
 import { Typography } from "@mui/material";
+import Head from "next/head";
 
 const Home = () => {
   const [results, setResults] = useState([]);
@@ -11,6 +12,10 @@ const Home = () => {
 
   return (
     <div>
+      <Head>
+        <title>Recycle Go Where</title>
+        <link rel="icon" href="/green.png" />
+      </Head>
       <section
         style={{
           height: "100vh",
