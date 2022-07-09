@@ -38,7 +38,7 @@ const Home = () => {
           </div>
         </div>
 
-        <Maps setSideInfo={setSideInfo} />
+        <Maps coordinates={results} setSideInfo={setSideInfo} />
       </section>
     </div>
   );
