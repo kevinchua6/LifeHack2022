@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import react from "react";
+import react, { useEffect, useState } from "react";
 import { remarksToColours } from "../data/remarks-to-colours";
 
 export default function Maps({ coordinates, setSideInfo }) {
@@ -20,13 +20,20 @@ function Map({ coordinates, setSideInfo }) {
           lng: parseFloat(coordinates[0].properties.Lon),
         }
       : { lat: 1.3521, lng: 103.8198 };
+
+  const [centerState, setCenterState] = useState(center);
+
+  useEffect(() => {
+    setCenterState(center);
+  }, [coordinates]);
+
   console.log("center", center);
   const zoom = coordinates && coordinates.length > 0 ? 15 : 12;
 
   return (
     <GoogleMap
       zoom={zoom}
-      center={center}
+      center={centerState}
       mapContainerClassName="map-container"
     >
       <Marker position={center} />
