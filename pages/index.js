@@ -6,6 +6,7 @@ import List from "../components/List";
 const Home = () => {
   console.log(process.env.NEXT_PUBLIC_KEY);
   const [results, setResults] = useState([]);
+  const [sideInfo, setSideInfo] = useState({});
 
   return (
     <div>
@@ -34,11 +35,11 @@ const Home = () => {
               background: "white",
             }}
           >
-            hello
+            sideInfo
           </div>
         </div>
 
-        <Maps />
+        <Maps setSideInfo={setSideInfo} />
       </section>
     </div>
   );

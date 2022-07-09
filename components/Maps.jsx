@@ -12,13 +12,25 @@ export default function Maps({ coordinates, setSideInfo }) {
 }
 
 function Map({ coordinates, setSideInfo }) {
-  const center = { lat: 44, lng: -80 };
+  const center =
+    coordinates && coordinates.length > 0
+      ? {
+          lat: parseFloat(coordinates[0].properties.Lat),
+          lng: parseFloat(coordinates[0].properties.Lon),
+        }
+      : { lat: 1.3521, lng: 103.8198 };
+  console.log(center);
+  const zoom = coordinates && coordinates.length > 0 ? 15 : 12;
 
   return (
-    <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
+    <GoogleMap
+      zoom={zoom}
+      center={center}
+      mapContainerClassName="map-container"
+    >
       <Marker position={center} />
-      {coordinates?.map((coordinate, index) => {
-        const [lat, lng] = coordinate.geometry.coordinates;
+      {coordinates?.map((coordinate) => {
+        console.log(coordinate);
         setSideInfo({
           servicePointName: coordinate.properties.Name,
           collectionType: coordinate.properties.Collection_Type,
@@ -30,8 +42,11 @@ function Map({ coordinates, setSideInfo }) {
         return (
           <Marker
             // icon={hello.svg}
-            key={index}
-            position={{ lat: lat, lng: lng }}
+            key={coordinate.properties.ID}
+            position={{
+              lat: parseFloat(coordinate.properties.Lat),
+              lng: parseFloat(coordinate.properties.Lon),
+            }}
           />
         );
       })}

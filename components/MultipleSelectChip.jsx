@@ -45,7 +45,7 @@ function getStyles(name, personName, theme) {
   };
 }
 
-export default function MultipleSelectChip({ eWaste, setEWaste }) {
+export default function MultipleSelectChip({ eWaste, setEWaste, classes }) {
   const theme = useTheme();
 
   const handleChange = (event) => {
@@ -57,6 +57,7 @@ export default function MultipleSelectChip({ eWaste, setEWaste }) {
       typeof value === "string" ? value.split("|") : value
     );
   };
+  // TODO: do validation
 
   return (
     <div>

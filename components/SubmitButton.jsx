@@ -12,8 +12,8 @@ function SubmitButton({ sendData }) {
       variant="contained"
       style={{
         backgroundColor: "#2E8B57",
-        width: "55%",
-        height: "52px",
+        width: "55.5%",
+        height: "54px",
         textTransform: "none",
         fontSize: "16px",
       }}
