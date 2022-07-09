@@ -5,6 +5,7 @@ import List from "../components/List";
 
 const Home = () => {
   const [results, setResults] = useState([]);
+  const [sideInfo, setSideInfo] = useState({});
 
   return (
     <div>
@@ -33,11 +34,11 @@ const Home = () => {
               background: "white",
             }}
           >
-            hello
+            sideInfo
           </div>
         </div>
 
-        <Maps coordinates={results} />
+        <Maps setSideInfo={setSideInfo} />
       </section>
     </div>
   );
