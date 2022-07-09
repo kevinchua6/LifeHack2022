@@ -5,6 +5,7 @@ import List from "../components/List";
 
 const Home = () => {
   console.log(process.env.NEXT_PUBLIC_KEY);
+
   const [postalCode, setPostalCode] = useState("");
   const [eWaste, setEWaste] = useState([]);
   return (
