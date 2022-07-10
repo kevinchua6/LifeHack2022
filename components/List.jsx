@@ -1,6 +1,6 @@
 import React from "react";
 
-const List = ({ list }) => {
+const Sidebar = ({ list }) => {
   console.log(list);
   return (
     <div className="list">
@@ -15,4 +15,4 @@ const List = ({ list }) => {
   );
 };
 
-export default List;
+export default Sidebar;

@@ -1,12 +1,23 @@
 import LandingPage from "../components/LandingPage";
 import Maps from "../components/Maps";
 import { useState } from "react";
-import List from "../components/List";
-import { Typography } from "@mui/material";
+import Sidebar from "../components/List";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import Head from "next/head";
 
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import MailIcon from "@mui/icons-material/Mail";
+import HomeIcon from "@mui/icons-material/Home";
+import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
+import LanguageIcon from "@mui/icons-material/Language";
 
 const Home = () => {
   const [results, setResults] = useState([]);
@@ -32,7 +43,7 @@ const Home = () => {
       </section>
       <section style={{ position: "relative" }}>
         <div className="wrapper">
-          <List list={results} />
+          <Sidebar list={results} />
           {showSideInfo && (
             <div
               style={{
@@ -54,27 +65,72 @@ const Home = () => {
                 <CloseIcon />
               </IconButton>
 
-              <Typography variant="h5" component="div">
+              <Typography variant="h4" component="div">
                 {sideInfo.servicePointName}
               </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+
+              <Typography sx={{ mb: 2 }} color="text.secondary">
                 {sideInfo.collectionType}
               </Typography>
 
-              <a href={sideInfo.directions} target="_blank" rel="noreferrer">
-                {sideInfo.location + " S" + Math.trunc(sideInfo.postalCode)}
-              </a>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <HomeIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={
+                        sideInfo.location +
+                        " S" +
+                        Math.trunc(sideInfo.postalCode)
+                      }
+                      onClick={() => window.open(sideInfo.directions, "_blank")}
+                    />
+                  </ListItemButton>
+                </ListItem>
 
-              <Typography variant="h5" component="div">
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <FormatAlignCenterIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={sideInfo.remarks}
+                      onClick={() => {
+                        navigator.clipboard.writeText(sideInfo.remarks);
+                      }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <LanguageIcon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={sideInfo.website}
+                      onClick={() => window.open(sideInfo.website, "_blank")}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+
+              {/* <a href={sideInfo.directions} target="_blank" rel="noreferrer">
+                {sideInfo.location + " S" + Math.trunc(sideInfo.postalCode)}
+              </a> */}
+
+              {/* <Typography variant="h5" component="div">
                 Remarks:
               </Typography>
-              <Typography paragraph>{sideInfo.remarks}</Typography>
-              <Typography variant="h5" component="div">
+              <Typography paragraph>{sideInfo.remarks}</Typography> */}
+              {/* <Typography variant="h5" component="div">
                 Website:
-              </Typography>
-              <a href={sideInfo.website} target="_blank" rel="noreferrer">
+              </Typography> */}
+              {/* <a href={sideInfo.website} target="_blank" rel="noreferrer">
                 {sideInfo.website}
-              </a>
+              </a> */}
             </div>
           )}
         </div>
