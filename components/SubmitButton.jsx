@@ -14,14 +14,14 @@ function SubmitButton({ sendData, postalCode, setIsSubmitClicked }) {
       variant="contained"
       style={{
         backgroundColor: "#2E8B57",
-        width: "55.5%",
+        width: "100%",
         height: "54px",
         textTransform: "none",
         fontSize: "16px",
       }}
       onClick={onS}
     >
-      Submit
+      Recycle Now
     </Button>
   );
 }

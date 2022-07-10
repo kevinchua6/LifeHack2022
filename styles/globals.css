@@ -65,3 +65,7 @@ input[type="number"] {
   border-color: #2E8B57;
   border-width: 2.5px;
 }
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #2E8B57;
+}
