@@ -35,11 +35,10 @@ body {
 .wrapper {
   position: absolute;
   z-index: 100;
-  width: 37%;
   display: flex;
 }
 .list {
-  width: 130%;
+  width: 25vw;
   max-height: 100vh;
   overflow-y: scroll;
 }

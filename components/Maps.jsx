@@ -3,16 +3,22 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import react, { useEffect, useState } from "react";
 import { remarksToColours } from "../data/remarks-to-colours";
 
-export default function Maps({ coordinates, setSideInfo }) {
+export default function Maps({ coordinates, setSideInfo, setShowSideInfo }) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_KEY,
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map coordinates={coordinates} setSideInfo={setSideInfo} />;
+  return (
+    <Map
+      coordinates={coordinates}
+      setSideInfo={setSideInfo}
+      setShowSideInfo={setShowSideInfo}
+    />
+  );
 }
 
-function Map({ coordinates, setSideInfo }) {
+function Map({ coordinates, setSideInfo, setShowSideInfo }) {
   const center =
     coordinates.length > 0
       ? {
@@ -42,7 +48,7 @@ function Map({ coordinates, setSideInfo }) {
           <Marker
             icon={`/${remarksToColours[coordinate.properties.Remarks]}.png`}
             key={coordinate.properties.ID}
-            onClick={() =>
+            onClick={() => {
               setSideInfo({
                 servicePointName: coordinate.properties.Name,
                 collectionType: coordinate.properties.Collection_Type,
@@ -51,8 +57,9 @@ function Map({ coordinates, setSideInfo }) {
                 remarks: coordinate.properties.Remarks,
                 website: coordinate.properties.Website,
                 directions: coordinate.properties.Directions,
-              })
-            }
+              });
+              setShowSideInfo(true);
+            }}
             position={{
               lat: parseFloat(coordinate.properties.Lat),
               lng: parseFloat(coordinate.properties.Lon),
