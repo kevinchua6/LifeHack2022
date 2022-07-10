@@ -65,6 +65,7 @@ export default function MultipleSelectChip({ eWaste, setEWaste, classes }) {
       <Select
         labelId="demo-multiple-chip-label"
         id="demo-multiple-chip"
+        color="success"
         multiple
         value={eWaste}
         onChange={handleChange}
