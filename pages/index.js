@@ -47,8 +47,6 @@ const Home = () => {
           {showSideInfo && (
             <div
               style={{
-                marginTop: "20px",
-                marginBottom: "20px",
                 marginLeft: "20px",
                 width: "30vw",
                 borderRadius: "11px",

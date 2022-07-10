@@ -8,8 +8,6 @@ body {
   background-color: #f7f8fb;
 }
 
-
-
 * {
   box-sizing: border-box;
 }
@@ -36,6 +34,7 @@ body {
   position: absolute;
   z-index: 100;
   display: flex;
+  max-height: 100vh;
 }
 .list {
   width: 25vw;
@@ -60,8 +59,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
 .MuiOutlinedInput-notchedOutline {
-  border-color: #2E8B57;
+  border-color: #2e8b57;
   border-width: 2.5px;
 }
