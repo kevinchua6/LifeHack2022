@@ -30,6 +30,10 @@ const Home = () => {
 
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  isSuccess && window.scrollTo(0, document.body.scrollHeight)
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -55,7 +59,7 @@ const Home = () => {
     <div>
       <Head>
         <title>Recycle Go Where</title>
-        <link rel="icon" href="/green.png" />
+        <link rel="icon" href="/recycle-bin.png" />
       </Head>
       <section
         style={{
@@ -66,9 +70,9 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <LandingPage setResults={setResults} />
+        <LandingPage setResults={setResults} setIsSuccess={setIsSuccess} />
       </section>
-      <section style={{ position: "relative" }}>
+      <section className="maps-section" style={{ position: "relative", display: isSuccess ? "block" : "none" }}>
         <div className="wrapper">
           <Sidebar
             list={results}
