@@ -71,6 +71,7 @@ const Home = () => {
           <Sidebar list={results} />
           {showSideInfo && (
             <div
+              className="side-info"
               style={{
                 marginTop: "20px",
                 marginBottom: "20px",
@@ -94,7 +95,7 @@ const Home = () => {
                 {sideInfo.servicePointName}
               </Typography>
 
-              <Typography sx={{ mb: 2 }} color="text.secondary">
+              <Typography sx={{ mb: 0.25, mt: 1 }} color="text.secondary">
                 {sideInfo.collectionType}
               </Typography>
 
@@ -142,21 +143,6 @@ const Home = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-
-              {/* <a href={sideInfo.directions} target="_blank" rel="noreferrer">
-                {sideInfo.location + " S" + Math.trunc(sideInfo.postalCode)}
-              </a> */}
-
-              {/* <Typography variant="h5" component="div">
-                Remarks:
-              </Typography>
-              <Typography paragraph>{sideInfo.remarks}</Typography> */}
-              {/* <Typography variant="h5" component="div">
-                Website:
-              </Typography> */}
-              {/* <a href={sideInfo.website} target="_blank" rel="noreferrer">
-                {sideInfo.website}
-              </a> */}
             </div>
           )}
         </div>
