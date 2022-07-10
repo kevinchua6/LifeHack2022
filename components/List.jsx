@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Sidebar = ({ list }) => {
   console.log(list);
@@ -6,9 +7,10 @@ const Sidebar = ({ list }) => {
     <div className="list">
       {list?.map((x) => (
         <div key={x.properties.ID} className="list-item">
-          <p>{x.properties.Name}</p>
-          <p>{x.properties.Location}</p>
-          <p>{x.distance}</p>
+          <p>
+            {x.properties.Name} {Math.round(x.distance)}m away
+          </p>
+          <Link href={x.properties.Directions}>{x.properties.Location}</Link>
         </div>
       ))}
     </div>
