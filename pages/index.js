@@ -68,7 +68,12 @@ const Home = () => {
       </section>
       <section style={{ position: "relative" }}>
         <div className="wrapper">
-          <Sidebar list={results} />
+          <Sidebar
+            list={results}
+            setShowInfo={setSideInfo}
+            setShowSideInfo={setShowSideInfo}
+          />
+
           {showSideInfo && (
             <div
               className="side-info"
