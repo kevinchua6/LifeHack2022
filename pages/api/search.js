@@ -64,7 +64,7 @@ const canRecycle = (types) => (site) => {
   return types.every((type) => recyclableList.includes(type));
 };
 
-export default async function handler(req, res) {
+export default async (req, res) => {
   const { address, types, limit = 10 } = req.query;
 
   if (!address) {
@@ -106,4 +106,4 @@ export default async function handler(req, res) {
   filteredSites.sort((a, b) => a.distance - b.distance);
 
   res.status(200).json(filteredSites.slice(0, limit));
-}
+};
