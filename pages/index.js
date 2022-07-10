@@ -3,11 +3,13 @@ import Maps from "../components/Maps";
 import { useState } from "react";
 import Sidebar from "../components/List";
 import {
+  Button,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import Head from "next/head";
@@ -23,6 +25,29 @@ const Home = () => {
   const [results, setResults] = useState([]);
   const [sideInfo, setSideInfo] = useState({});
   const [showSideInfo, setShowSideInfo] = useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
+
+  const action = (
+    <div>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </div>
+  );
 
   return (
     <div>
@@ -98,6 +123,7 @@ const Home = () => {
                     <ListItemText
                       primary={sideInfo.remarks}
                       onClick={() => {
+                        setOpenSnackbar(true);
                         navigator.clipboard.writeText(sideInfo.remarks);
                       }}
                     />
@@ -141,6 +167,13 @@ const Home = () => {
           setShowSideInfo={setShowSideInfo}
         />
       </section>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Copied to clipboard"
+        action={action}
+      />
     </div>
   );
 };
