@@ -33,7 +33,6 @@ function Map({ coordinates, setSideInfo, setShowSideInfo }) {
     setCenterState(center);
   }, [coordinates]);
 
-  console.log("center", center);
   const zoom = coordinates && coordinates.length > 0 ? 15 : 12;
 
   return (
