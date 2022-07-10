@@ -4,6 +4,7 @@ import { useState } from "react";
 import Sidebar from "../components/List";
 import {
   Button,
+  Chip,
   List,
   ListItem,
   ListItemButton,
@@ -20,6 +21,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import HomeIcon from "@mui/icons-material/Home";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import LanguageIcon from "@mui/icons-material/Language";
+import { remarksToRecyclableList } from "../data/remarks-to-recyclables";
 
 const Home = () => {
   const [results, setResults] = useState([]);
@@ -95,7 +97,10 @@ const Home = () => {
                 {sideInfo.servicePointName}
               </Typography>
 
-              <Typography sx={{ mb: 0.25, mt: 1 }} color="text.secondary">
+              <Typography
+                sx={{ mb: 0.25, mt: 1, fontSize: 22 }}
+                color="text.secondary"
+              >
                 {sideInfo.collectionType}
               </Typography>
 
@@ -119,21 +124,6 @@ const Home = () => {
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <FormatAlignCenterIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={sideInfo.remarks}
-                      onClick={() => {
-                        setOpenSnackbar(true);
-                        navigator.clipboard.writeText(sideInfo.remarks);
-                      }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemIcon>
                       <LanguageIcon />
                     </ListItemIcon>
                     <ListItemText
@@ -143,6 +133,16 @@ const Home = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
+              <br></br>
+              {remarksToRecyclableList[sideInfo.remarks]?.map((item) => (
+                <Chip
+                  key={item}
+                  label={item}
+                  style={{ margin: "5px" }}
+                  size="small"
+                  // color="primary"
+                />
+              ))}
             </div>
           )}
         </div>
