@@ -3,7 +3,7 @@ import Link from "next/link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { ListItemButton } from "@mui/material";
+import { ListItemButton, Typography } from "@mui/material";
 import RoomIcon from "@mui/icons-material/Room";
 
 const Sidebar = ({ list, setShowInfo, setShowSideInfo }) => {
@@ -48,7 +48,7 @@ const Sidebar = ({ list, setShowInfo, setShowSideInfo }) => {
               justifyContent: "flex-start",
               padding: 1,
 
-              height: "100px",
+              height: "13vh",
               boxShadow:
                 "0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15)",
             }}
@@ -63,15 +63,17 @@ const Sidebar = ({ list, setShowInfo, setShowSideInfo }) => {
                 height: "100%",
               }}
             >
-              <ListItemText sx={{ flexGrow: 0 }}>
+              <Typography sx={{ flexGrow: 0, fontSize: "1.0vw" }}>
                 <strong>{titleCase(x.properties.Name)}</strong>{" "}
                 <span style={{ color: "green" }}>
                   ({Math.round(x.distance)}m away)
                 </span>
-              </ListItemText>
+              </Typography>
               <div style={{ display: "flex" }}>
                 <RoomIcon fontSize="small" />
-                {titleCase(x.properties.Location)}
+                <Typography sx={{ fontSize: "1vw" }} color="text.secondary">
+                  {titleCase(x.properties.Location)}
+                </Typography>
               </div>
             </ListItemButton>
           </ListItem>
