@@ -63,13 +63,13 @@ export default function MultipleSelectChip({ eWaste, setEWaste, classes }) {
     <FormControl fullWidth sx={{ marginTop: "16px", marginBottom: "16px" }}>
       <InputLabel id="demo-multiple-chip-label">E-Waste</InputLabel>
       <Select
+        label="E-Waste"
         labelId="demo-multiple-chip-label"
         id="demo-multiple-chip"
         color="success"
         multiple
         value={eWaste}
         onChange={handleChange}
-        input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
         renderValue={(selected) => (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
             {selected.map((value) => (
