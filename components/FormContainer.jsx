@@ -8,7 +8,7 @@ const LIMIT = 10;
 
 const UTOWN_POSTAL_CODE = "138601";
 
-function FormContainer({ setResults }) {
+function FormContainer({ setResults, setIsSuccess }) {
   const [postalCode, setPostalCode] = useState("");
   const [eWaste, setEWaste] = useState([]);
 
@@ -52,6 +52,7 @@ function FormContainer({ setResults }) {
         sendData={sendData}
         postalCode={postalCode}
         setIsSubmitClicked={setIsSubmitClicked}
+        setIsSuccess={setIsSuccess}
       />
     </div>
   );
