@@ -36,11 +36,13 @@ body {
   position: absolute;
   z-index: 100;
   display: flex;
+  pointer-events: none;
 }
 .list {
   width: 25vw;
   max-height: 100vh;
   overflow-y: scroll;
+  pointer-events: auto;
 }
 
 .list-item {
@@ -50,6 +52,13 @@ body {
   color: rgb(44, 44, 44);
   box-shadow: rgb(0 0 0 / 10%) 0px 1px 3px 0px, rgb(0 0 0 / 6%) 0px 1px 2px 0px;
 }
+
+.side-info {
+  height: fit-content;
+  pointer-events: auto;
+  box-shadow: 0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15)
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

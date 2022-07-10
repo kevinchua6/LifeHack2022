@@ -1,5 +1,5 @@
 import sites from "../../data/sites.json";
-import { remarksToRecyclableList } from "./e-waste-types";
+import { remarksToRecyclableList } from "../../data/remarks-to-recyclables";
 
 // modified from: http://www.movable-type.co.uk/scripts/latlong.html
 const R = 6371e3; // metres
@@ -39,11 +39,11 @@ export default async function handler(req, res) {
 
   const data = await fetch(
     "https://maps.googleapis.com/maps/api/geocode/json?" +
-      new URLSearchParams({
-        address: `singapore ${address}`,
-        sensor: "true",
-        key: process.env.NEXT_PUBLIC_KEY,
-      })
+    new URLSearchParams({
+      address: `singapore ${address}`,
+      sensor: "true",
+      key: process.env.NEXT_PUBLIC_KEY,
+    })
   ).then((response) => response.json());
 
   if (data.status === "ZERO_RESULTS") {

@@ -3,11 +3,13 @@ import Maps from "../components/Maps";
 import { useState } from "react";
 import Sidebar from "../components/List";
 import {
+  Button,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import Head from "next/head";
@@ -23,6 +25,29 @@ const Home = () => {
   const [results, setResults] = useState([]);
   const [sideInfo, setSideInfo] = useState({});
   const [showSideInfo, setShowSideInfo] = useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
+
+  const action = (
+    <div>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </div>
+  );
 
   return (
     <div>
@@ -46,6 +71,7 @@ const Home = () => {
           <Sidebar list={results} />
           {showSideInfo && (
             <div
+              className="side-info"
               style={{
                 marginTop: "20px",
                 marginBottom: "20px",
@@ -69,7 +95,7 @@ const Home = () => {
                 {sideInfo.servicePointName}
               </Typography>
 
-              <Typography sx={{ mb: 2 }} color="text.secondary">
+              <Typography sx={{ mb: 0.25, mt: 1 }} color="text.secondary">
                 {sideInfo.collectionType}
               </Typography>
 
@@ -98,6 +124,7 @@ const Home = () => {
                     <ListItemText
                       primary={sideInfo.remarks}
                       onClick={() => {
+                        setOpenSnackbar(true);
                         navigator.clipboard.writeText(sideInfo.remarks);
                       }}
                     />
@@ -116,21 +143,6 @@ const Home = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-
-              {/* <a href={sideInfo.directions} target="_blank" rel="noreferrer">
-                {sideInfo.location + " S" + Math.trunc(sideInfo.postalCode)}
-              </a> */}
-
-              {/* <Typography variant="h5" component="div">
-                Remarks:
-              </Typography>
-              <Typography paragraph>{sideInfo.remarks}</Typography> */}
-              {/* <Typography variant="h5" component="div">
-                Website:
-              </Typography> */}
-              {/* <a href={sideInfo.website} target="_blank" rel="noreferrer">
-                {sideInfo.website}
-              </a> */}
             </div>
           )}
         </div>
@@ -141,6 +153,13 @@ const Home = () => {
           setShowSideInfo={setShowSideInfo}
         />
       </section>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Copied to clipboard"
+        action={action}
+      />
     </div>
   );
 };
