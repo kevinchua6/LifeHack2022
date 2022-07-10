@@ -14,7 +14,11 @@ function PostalCodeTextField({ postalCode, setPostalCode, isSubmitClicked }) {
       }
       id="outlined-basic"
       label="Enter postal code"
-      helperText={isSubmitClicked && "Please enter a 6 character postal code"}
+      helperText={
+        isSubmitClicked &&
+        postalCode.length !== 6 &&
+        "Please enter a 6 character postal code"
+      }
       variant="outlined"
       fullWidth
       color="success"
