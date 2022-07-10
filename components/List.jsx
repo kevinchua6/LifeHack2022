@@ -7,7 +7,6 @@ import { ListItemButton } from "@mui/material";
 import RoomIcon from "@mui/icons-material/Room";
 
 const Sidebar = ({ list, setShowInfo, setShowSideInfo }) => {
-  console.log(list);
   function titleCase(str) {
     var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
