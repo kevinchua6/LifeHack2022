@@ -60,36 +60,34 @@ export default function MultipleSelectChip({ eWaste, setEWaste, classes }) {
   // TODO: do validation
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 560, maxWidth: 560 }}>
-        <InputLabel id="demo-multiple-chip-label">E-Waste</InputLabel>
-        <Select
-          labelId="demo-multiple-chip-label"
-          id="demo-multiple-chip"
-          multiple
-          value={eWaste}
-          onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
-          renderValue={(selected) => (
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} />
-              ))}
-            </Box>
-          )}
-          MenuProps={MenuProps}
-        >
-          {eWasteList.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, eWaste, theme)}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl fullWidth sx={{ marginTop: "16px", marginBottom: "16px" }}>
+      <InputLabel id="demo-multiple-chip-label">E-Waste</InputLabel>
+      <Select
+        labelId="demo-multiple-chip-label"
+        id="demo-multiple-chip"
+        multiple
+        value={eWaste}
+        onChange={handleChange}
+        input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+        renderValue={(selected) => (
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+            {selected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
+        MenuProps={MenuProps}
+      >
+        {eWasteList.map((name) => (
+          <MenuItem
+            key={name}
+            value={name}
+            style={getStyles(name, eWaste, theme)}
+          >
+            {name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }

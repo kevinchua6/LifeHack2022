@@ -16,7 +16,7 @@ function PostalCodeTextField({ postalCode, setPostalCode, isSubmitClicked }) {
       label="Enter postal code"
       helperText={isSubmitClicked && "Please enter a 6 character postal code"}
       variant="outlined"
-      style={{ width: "55%" }}
+      fullWidth
       color="success"
       value={postalCode}
       type="number"

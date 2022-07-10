@@ -4,7 +4,7 @@ import FormContainer from "./FormContainer";
 
 function LandingPage({ setResults }) {
   return (
-    <div>
+    <div style={{ width: "60%" }}>
       <Header />
       <FormContainer setResults={setResults} />
     </div>
